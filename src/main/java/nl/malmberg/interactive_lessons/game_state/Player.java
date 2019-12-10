@@ -24,7 +24,7 @@ public class Player {
         this.name = name;
     }
 
-    public void addAnswer(Question question, Answer answer, Integer score) {
+    public void addAnswer(final Question question, final Answer answer, final Integer score) {
         this.score += score;
         answers.put(question, answer);
         streakLength = answer.correct() ? streakLength + 1 : 0;
@@ -58,7 +58,7 @@ public class Player {
     }
 
     public static int compareTo(final Player a, final Player b) {
-        if (a != null && b != null) {
+        if (null != a && null != b) {
             return Integer.compare(b.score, a.score);
         }
         return 0;

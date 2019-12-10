@@ -12,8 +12,8 @@ import nl.malmberg.interactive_lessons.model.ImmutableGameModel;
 public class Main {
     private static final Logger LOG = LoggerFactory.getLogger(Main.class);
 
-    public static void main(String[] args) {
-        Vertx vertx = Vertx.vertx();
+    public static void main(final String[] args) {
+        final Vertx vertx = Vertx.vertx();
         vertx.exceptionHandler(event -> LOG.error("CAUGHT A THROWABLE EXCEPTION: ", event));
 
         registerInternalObjects(vertx);

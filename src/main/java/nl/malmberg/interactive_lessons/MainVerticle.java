@@ -26,9 +26,9 @@ public class MainVerticle extends AbstractVerticle {
     private EventBusHandler eventbusHandler;
 
     @Override
-    public void start(Promise<Void> startPromise) {
+    public void start(final Promise<Void> startPromise) {
         eventbusHandler = new EventBusHandler(vertx);
-        Router router = Router.router(vertx);
+        final Router router = Router.router(vertx);
 
         initCorsHeaders(router);
         initSockJSEventBus(router);
@@ -46,7 +46,7 @@ public class MainVerticle extends AbstractVerticle {
         });
     }
 
-    private void initCorsHeaders(Router router) {
+    private void initCorsHeaders(final Router router) {
         router.route().handler(CorsHandler.create("http://localhost:4200")
                                           .allowedMethod(HttpMethod.GET)
                                           .allowedMethod(HttpMethod.POST)
@@ -59,7 +59,7 @@ public class MainVerticle extends AbstractVerticle {
     }
 
     // you will need to allow outbound and inbound to allow eventbus communication.
-    private void initSockJSEventBus(Router router) {
+    private void initSockJSEventBus(final Router router) {
         router.route(ROUTE_EVENTBUS).subRouter(SockJSHandler.create(vertx)
                                                             .bridge(Topic.addInAndOutboundPermittedOptions(new BridgeOptions())));
     }

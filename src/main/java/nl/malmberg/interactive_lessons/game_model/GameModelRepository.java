@@ -15,12 +15,12 @@ import static java.util.UUID.fromString;
 public class GameModelRepository {
     private final Map<UUID, GameModel> gameModels = new HashMap<>();
 
-    public void handleAddGameModel(Message<AddGameModelObject> message) {
+    public void handleAddGameModel(final Message<AddGameModelObject> message) {
         final AddGameModelObject addGameModelObject = message.body();
         gameModels.put(fromString(addGameModelObject.getId()), addGameModelObject.getGameModel());
     }
 
-    public void handleGetGameModel(Message<GetGameModelObject> message) {
+    public void handleGetGameModel(final Message<GetGameModelObject> message) {
         final GetGameModelObject getGameModelObject = message.body();
         Optional.ofNullable(gameModels.get(fromString(getGameModelObject.getId())))
                 .ifPresentOrElse(message::reply, () -> message.fail(404, "No Game Model found"));

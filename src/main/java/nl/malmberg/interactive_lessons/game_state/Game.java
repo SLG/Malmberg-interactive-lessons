@@ -78,12 +78,12 @@ public class Game {
         broadcast();
     }
 
-    public void join(Player player) {
+    public void join(final Player player) {
         playerList.put(player.getId(), player);
         broadcast();
     }
 
-    public void leave(String playerId) {
+    public void leave(final String playerId) {
         playerList.remove(UUID.fromString(playerId));
         broadcast();
     }
@@ -122,7 +122,7 @@ public class Game {
                 .stream()
                 .filter(providedAnswer -> providedAnswer.question().id().equals(questionId))
                 .count() == playerList.size()) {
-            if (currentTimer != null) {
+            if (null != currentTimer) {
                 vertx.cancelTimer(currentTimer);
                 currentTimer = null;
             }
@@ -153,7 +153,7 @@ public class Game {
                                              .findFirst()
                                              .orElseThrow(() -> new IllegalStateException("Answer not in answers: " + providedAnswerValue + ", " + answers));
         providedAnswers.put(player, ImmutableProvidedAnswer.builder().question(currentQuestion).answer(providedAnswer).build());
-        Duration answerDuration = Duration.between(answerTime, OffsetDateTime.now());
+        final Duration answerDuration = Duration.between(answerTime, OffsetDateTime.now());
         final Integer playerScore = computeScore(providedAnswer, currentQuestion.answerTime(), answerDuration.toMillis(),
                 player.getStreakLength());
         player.addAnswer(currentQuestion, providedAnswer, playerScore);
@@ -161,8 +161,8 @@ public class Game {
 
     private Integer computeScore(final Answer providedAnswer, final float maxDuration, final float duration, final int streakLength) {
         if (providedAnswer.correct()) {
-            int baseScore = (int) ((maxDuration - duration) / maxDuration * MAX_SCORE);
-            int streakScore = streakLength * STREAK_SCORE;
+            final int baseScore = (int) ((maxDuration - duration) / maxDuration * MAX_SCORE);
+            final int streakScore = streakLength * STREAK_SCORE;
             return baseScore + streakScore;
         }
         return 0;

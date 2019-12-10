@@ -8,7 +8,7 @@ public class GameModelVerticle extends AbstractVerticle {
     private final GameModelRepository gameModelRepository = new GameModelRepository();
 
     @Override
-    public void start(Promise<Void> startPromise) {
+    public void start(final Promise<Void> startPromise) {
         initEventBus();
         startPromise.complete();
     }

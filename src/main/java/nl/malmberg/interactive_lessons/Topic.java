@@ -20,7 +20,7 @@ public final class Topic {
         // Hidden
     }
 
-    public static BridgeOptions addInAndOutboundPermittedOptions(BridgeOptions bridgeOptions) {
+    public static BridgeOptions addInAndOutboundPermittedOptions(final BridgeOptions bridgeOptions) {
         getPermittedOptions(getInbound()).forEach(bridgeOptions::addInboundPermitted);
         getPermittedOptions(getOutbound()).forEach(bridgeOptions::addOutboundPermitted);
         return bridgeOptions;
@@ -34,7 +34,7 @@ public final class Topic {
         return ImmutableList.of(CREATE_GAME, JOIN_GAME, LEAVE_GAME, START_GAME, ANSWER, GET_GAME, NEXT_QUESTION);
     }
 
-    private static ImmutableList<PermittedOptions> getPermittedOptions(ImmutableList<String> topics) {
+    private static ImmutableList<PermittedOptions> getPermittedOptions(final ImmutableList<String> topics) {
         return topics.stream().map(topic -> new PermittedOptions().setAddress(topic)).collect(ImmutableList.toImmutableList());
     }
 }

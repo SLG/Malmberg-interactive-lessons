@@ -20,8 +20,8 @@ public final class MockData {
     public static GameModel mockGameModel() {
         return ImmutableGameModel.builder()
                                  .id(UUID.fromString("4c72ecbb-1eee-4586-99d0-1c1f3b37c1df"))
-                                 .name("Mock Game")
-                                 .description("This is a simple mock game")
+                                 .name("Interactieve les")
+                                 .description("Dit is een voorbeeld les")
                                  .addQuestions(mockQuestion1())
                                  .addQuestions(mockQuestion2())
                                  .addQuestions(mockQuestion3())
@@ -33,10 +33,10 @@ public final class MockData {
     private static Question mockQuestion1() {
         return ImmutableQuestion.builder()
                                 .questionType(QuestionType.MULTIPLE_CHOICE)
-                                .value("A is the correct answer")
-                                .addAnswers(ImmutableAnswer.builder().value("A").correct(true).build())
-                                .addAnswers(ImmutableAnswer.builder().value("B").correct(false).build())
-                                .addAnswers(ImmutableAnswer.builder().value("C").correct(false).build())
+                                .value("3 * 3 = ?")
+                                .addAnswers(ImmutableAnswer.builder().value("6").correct(false).build())
+                                .addAnswers(ImmutableAnswer.builder().value("8").correct(true).build())
+                                .addAnswers(ImmutableAnswer.builder().value("9").correct(false).build())
                                 .questionTime(DEFAULT_QUESTION_TIME)
                                 .answerTime(DEFAULT_ANSWER_TIME)
                                 .build();
@@ -45,10 +45,10 @@ public final class MockData {
     private static Question mockQuestion2() {
         return ImmutableQuestion.builder()
                                 .questionType(QuestionType.MULTIPLE_CHOICE)
-                                .value("B is the correct answer")
-                                .addAnswers(ImmutableAnswer.builder().value("A").correct(false).build())
-                                .addAnswers(ImmutableAnswer.builder().value("B").correct(true).build())
-                                .addAnswers(ImmutableAnswer.builder().value("C").correct(false).build())
+                                .value("6 * 4 = ?")
+                                .addAnswers(ImmutableAnswer.builder().value("24").correct(true).build())
+                                .addAnswers(ImmutableAnswer.builder().value("28").correct(false).build())
+                                .addAnswers(ImmutableAnswer.builder().value("30").correct(false).build())
                                 .questionTime(DEFAULT_QUESTION_TIME)
                                 .answerTime(DEFAULT_ANSWER_TIME)
                                 .build();
@@ -57,10 +57,10 @@ public final class MockData {
     private static Question mockQuestion3() {
         return ImmutableQuestion.builder()
                                 .questionType(QuestionType.MULTIPLE_CHOICE)
-                                .value("C is the correct answer")
-                                .addAnswers(ImmutableAnswer.builder().value("A").correct(false).build())
-                                .addAnswers(ImmutableAnswer.builder().value("B").correct(false).build())
-                                .addAnswers(ImmutableAnswer.builder().value("C").correct(true).build())
+                                .value("9 * 4 = ?")
+                                .addAnswers(ImmutableAnswer.builder().value("32").correct(false).build())
+                                .addAnswers(ImmutableAnswer.builder().value("35").correct(false).build())
+                                .addAnswers(ImmutableAnswer.builder().value("36").correct(true).build())
                                 .questionTime(DEFAULT_QUESTION_TIME)
                                 .answerTime(DEFAULT_ANSWER_TIME)
                                 .build();
@@ -69,7 +69,7 @@ public final class MockData {
     private static Question mockQuestion4() {
         return ImmutableQuestion.builder()
                                 .questionType(QuestionType.TRUE_OR_FALSE)
-                                .value("True is the correct answer")
+                                .value("8 * 2 = 16")
                                 .addAnswers(ImmutableAnswer.builder().value("True").correct(true).build())
                                 .addAnswers(ImmutableAnswer.builder().value("False").correct(false).build())
                                 .questionTime(DEFAULT_QUESTION_TIME)
@@ -80,7 +80,7 @@ public final class MockData {
     private static Question mockQuestion5() {
         return ImmutableQuestion.builder()
                                 .questionType(QuestionType.TRUE_OR_FALSE)
-                                .value("False is the correct answer")
+                                .value("9 * 3 = 26")
                                 .addAnswers(ImmutableAnswer.builder().value("True").correct(false).build())
                                 .addAnswers(ImmutableAnswer.builder().value("False").correct(true).build())
                                 .questionTime(DEFAULT_QUESTION_TIME)

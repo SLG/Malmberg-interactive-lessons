@@ -128,7 +128,7 @@ public class EventBusHandler {
         });
     }
 
-    private <T> void doIfGameExists(final UUID gameId, final Message<T> message, Consumer<Game> action) {
+    private <T> void doIfGameExists(final UUID gameId, final Message<T> message, final Consumer<Game> action) {
         if (games.containsKey(gameId)) {
             final Game game = games.get(gameId);
             action.accept(game);
